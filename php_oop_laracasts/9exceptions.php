@@ -49,3 +49,65 @@ class User
 
 //3 exception
 
+// 9 exception last example
+class MaximumMembersReached extends Exception
+{
+    public static function fromTooManyMembers()
+    {
+        return new static('You may not add more than 3 members');
+    }
+}
+
+class Member
+{
+    public $name;
+
+    public function __construct($name)
+    {
+        $this->name = $name;
+    }
+}
+
+class Team
+{
+    protected $members = [];
+
+    public function add(Member $members)
+    {
+        if (count($this->members) === 3) {
+            throw MaximumMembersReached::fromTooManyMembers();
+        }
+
+        $this->members[] = $members;
+    }
+
+    public function members()
+    {
+        return $this->members;
+    }
+}
+
+class TeamMembersController
+{
+    public function store()
+    {
+        $team = new Team; //has a maximum of 3 members
+        try {
+            $team->add(new Member('Jane Doe'));
+            $team->add(new Member('John Doe'));
+            $team->add(new Member('Peter Doe'));
+            $team->add(new Member('Kelly Doe'));
+
+            var_dump($team->members());
+        } catch (MaximumMembersReached $e) {
+            var_dump($e->getMessage());
+        }
+
+
+
+
+    }
+}
+
+(new TeamMembersController())->store();
+
