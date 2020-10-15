@@ -7,18 +7,23 @@
 //То есть мы можем захотеть поменять способ сохранения в бд или же логику логирования в обоих случаях придется лесть в этот класс и менять его
 
 //Чтобы подогнать этот класс под этот принцип нужно разделить обязанности класса
+//Таким образом мы применили SRP то что касается продукта осталось на месте а вот
+//логирование мы перенесли в отдельный класс
+//у нас теперь два класса и каждый класс имеет свою обязанность
+//и соответственно одну едиственную причину для изменения класса
 class Product {
+
+    private $logger;
+
+    public function __construct(Logger $logger) {
+        $this->logger = $logger;
+    }
 
     public function setPrice() {
         try {
             //save price in db
         } catch (DBException $e) {
-             $this->logError($e->getMessage());
+            $this->logger->log($e->getMessage());
         }
     }
-
-     public function logError($error) {
-         //save error message
-     }
-
 }

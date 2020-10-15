@@ -1,5 +1,6 @@
 <?php
 //Pseudo code for examples
 
-$product = new Product();
+$logger = new Logger();
+$product = new Product($logger);
 $product->setPrice(10);
