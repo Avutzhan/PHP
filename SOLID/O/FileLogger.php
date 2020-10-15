@@ -1,6 +1,6 @@
 <?php
 
-class Logger {
+class FileLogger implements ILogger {
     private function saveToFile($message) {
         //...
     }

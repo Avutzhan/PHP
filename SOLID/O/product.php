@@ -4,7 +4,7 @@ class Product {
 
     private $logger;
 
-    public function __construct(Logger $logger) {
+    public function __construct(ILogger $logger) {
         $this->logger = $logger;
     }
 
