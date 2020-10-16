@@ -10,8 +10,14 @@
 //знали только о тех методах которые необходимы им в работе
 //и чтобы при изменении метода интерфейса не должны меняться клиенты который этот метод используют
 
-interface ISuperTransformer {
-    public function toCar(); // трансформация в машину самолет и корабль
+interface ICarTransformer {
+    public function toCar();
+}
+
+interface IPlaneTransformer {
     public function toPlane();
+}
+
+interface IShipTransformer {
     public function toShip();
 }

@@ -1,7 +1,7 @@
 <?php
 
 //тут мы реализуем все три метода этот класс умеет все
-class SuperTransformer implements ISuperTransformer {
+class SuperTransformer implements ICarTransformer, IPlaneTransformer, IShipTransformer {
     public function toCar() {
         echo 'transform to car';
     }
@@ -18,14 +18,8 @@ class SuperTransformer implements ISuperTransformer {
 //чтобы реализовать три метода нам придется использовать тот что нужен а не нужные
 //поставить в них заглушку в виде ошибок
 //если мы создадим трансформер самолет и корабль там тоже будут заглушки
-class CarTransformer implements ISuperTransformer {
+class CarTransformer implements ICarTransformer {
     public function toCar() {
         echo 'transform to car';
-    }
-    public function toPlane() {
-        throw new Exception('i cant transform to plane');
-    }
-    public function toShip() {
-        throw new Exception('i cant transform to ship');
     }
 }
