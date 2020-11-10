@@ -1,6 +1,7 @@
 <?php
 
-function findSmallest(& $list) {
+function findSmallest(& $list)
+{
     $small = $list[0];
     $index = 0;
     for($i = $index, $len = count($list); $i < $len; $i++) {
@@ -12,7 +13,8 @@ function findSmallest(& $list) {
     return $index;
 }
 
-function selectionSort($list) {
+function selectionSort($list)
+{
     $sorted = [];
     for($i = 0, $len = count($list); $i < $len; $i++) {
         $index = findSmallest($list);
