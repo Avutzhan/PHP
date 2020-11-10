@@ -1,6 +1,8 @@
 <?php
 
-function findSmallest(& $list)
+//все тоже самое что и первый пример только почему то тут передали массив по ссылке
+//так как входящий массив не модифицируем я убрал & он тут не нужен
+function findSmallest($list)
 {
     $small = $list[0];
     $index = 0;
@@ -13,6 +15,9 @@ function findSmallest(& $list)
     return $index;
 }
 
+//тут тоже самое что и в первом примере только там использовали для вставки нового элемента
+//array_push а тут напрямую вставили
+//еще вывод результата кривой какой то был при тестах удобнее использовать var_dump он информативнее
 function selectionSort($list)
 {
     $sorted = [];
@@ -23,4 +28,5 @@ function selectionSort($list)
     return $sorted;
 }
 
-echo '[' . join(', ', selectionSort([5, 3, 6, 2, 10])) . ']' . PHP_EOL; // [2, 3, 5, 6, 10]
+var_dump(selectionSort([5, 3, 6, 2, 10])); // [2, 3, 5, 6, 10]
+
