@@ -2,6 +2,7 @@
 
 function fact($x)
 {
+    //base case
     if ($x === 1) {
         return 1;
     }
