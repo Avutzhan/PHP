@@ -2,13 +2,14 @@
 //получаем отсортированный массив и значение
 //если это значение есть в массиве возвращаем индекс
 //если нет то null
-function binarySearch($needle, $array) {
+function binarySearch($needle, $array, $start, $end) {
     //следим в какой части массива проводится поиск
     //начало и конец
-    $start = 0;
-    $end = count($array) - 1;
-
     //создаем петлю пока low меньше или равно high выполняем код
+    if ($start > $end) {
+        return null;
+    }
+
     while ($start <= $end) {
         //середина массива если значение не четно то округляем в меньшую сторону
         $middle = floor(($start + $end) / 2);
@@ -26,10 +27,8 @@ function binarySearch($needle, $array) {
             $start = $middle + 1;
         }
     }
-
-    return null;
 }
 
 $array = [1, 3, 5, 7, 9];
-echo binarySearch(3, $array) . "\n";
-echo binarySearch(-1, $array) . "\n";
+echo binarySearch(3, $array, 0, count($array)) . "\n";
+echo binarySearch(-1, $array, 0, count($array)) . "\n";
