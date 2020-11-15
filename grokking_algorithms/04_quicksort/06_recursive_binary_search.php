@@ -31,3 +31,53 @@ function recursiveBinarySearch($arr = array(), $val, $low, $high) {
 $arr = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
 
 echo recursiveBinarySearch($arr, 13, 0, count($arr)); // 12
+
+//call 1
+//recursiveBinarySearch($arr, 13, 0, count($arr)); //12
+//incoming arr = 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
+//val = 13
+//low = 0
+//high = 15
+//mid = 7
+//arr[mid] = 8 != 13 so we will continue
+//8 > 13 not true so we will continue
+//8 > 13 true
+//recursive case
+//call 2
+//return recursiveBinarySearch($arr, $val, $mid + 1, $high);
+//incoming arr = 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
+//val = 13
+//low = 8
+//это означает что мы сдвигаем начало в середину и делаем поиск в правой половине
+//...9,10,11,12,13,14,15 массива
+//high = 15
+//mid = 11 этот индекс уже в правой половине массива
+//arr[mid] = 12
+//12 != 13 so continue
+//12 ? 13 not true continue
+//12 < 13 true
+//recursive case
+//call 3
+//return recursiveBinarySearch($arr, $val, $mid + 1, $high);
+//incoming arr = 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
+//val = 13
+//low = 12
+//...13,14,15 сдвинули начало к середине
+//high = 15
+//mid = 13
+//arr[mid] = 14
+//14 != 13 so continue
+//14 > 13 true
+//recursive case
+//return recursiveBinarySearch($arr, $val, $low, $mid - 1);
+//incoming arr = 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
+//val = 13
+//low = 12
+//high = 12
+//так как 14 > 13 то отбрасываем эту часть 14,15 массива так как там точно нет того что ищем то есть мы конец переносим св середину
+//mid = 12
+//arr[mid] = 13
+//if ($arr[$mid] == $val) {
+//    return $mid;
+//}
+//и наконец мы попадаем в базовый случай где значение середины массива равно искомому значению возвращаем индекс этого элемента
