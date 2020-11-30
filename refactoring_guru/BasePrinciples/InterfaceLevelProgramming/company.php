@@ -92,6 +92,7 @@ echo $company->createSoftware();
 
 
 // the main company class code became independent from employees class. Specific employees create specific classes of companies.
+//fabric method pattern
 abstract class Company
 {
     public $soft;
