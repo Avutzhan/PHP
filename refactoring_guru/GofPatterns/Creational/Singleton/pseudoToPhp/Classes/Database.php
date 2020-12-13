@@ -19,20 +19,3 @@ class Database
         $this->sql = $sql;
     }
 }
-
-class Application
-{
-    public function main()
-    {
-        $database = new Database();
-        $foo = $database->getInstance();
-        $foo->query("select... \n");
-        var_dump($foo);
-        $bar = $database->getInstance();
-        var_dump($bar);
-
-    }
-}
-
-$app = new Application();
-$app->main();
